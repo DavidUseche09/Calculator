@@ -1,5 +1,7 @@
 from tkinter import *
+import sys
 
+#Window Config
 window = Tk()
 window.title("Calculator")
 
@@ -25,6 +27,23 @@ def doMath():
     eText.delete(0, END)
     eText.insert(0, result)
     i = 0
+
+def exitProgram():
+    window.quit()
+    window.destroy()
+    sys.exit()
+    
+def menuTest():
+    mainManu = Menu(window)
+    submenu = Menu(mainManu, tearoff=0)
+    submenu.add_command(label='New File')
+    submenu.add_separator()
+    submenu.add_command(label='Exit', command=exitProgram)
+    mainManu.add_cascade(menu=submenu, label='Menu')
+    subMenuHelp = Menu(mainManu, tearoff=0)
+    subMenuHelp.add_command(label='Fuck you')
+    mainManu.add_cascade(menu=subMenuHelp, label='Help')
+    window.config(menu=mainManu)
 
 #Number Buttons
 button1 = Button(window, text= "1", width= 5, height= 2, command= lambda: clickButton(1))
@@ -77,5 +96,6 @@ dotButton.grid(row=5, column=2, padx=5, pady=5)
 equalsButton.grid(row=5, column=3, padx=5, pady=5)
 
 
+menuTest()
 
 window.mainloop()
