@@ -1,7 +1,7 @@
 from tkinter import *
 
 window = Tk()
-window.title("Calculadora")
+window.title("Calculator")
 
 i = 0
 
